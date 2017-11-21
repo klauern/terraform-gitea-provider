@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/hashicorp/terraform/terraform"
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/plugin"
-	"github.com/hashicorp/terraform/terraform"
 )
 
 func main() {
@@ -12,18 +12,4 @@ func main() {
 			return Provider()
 		},
 	})
-}
-
-func Provider() *schema.Provider {
-	return &schema.Provider{
-		ResourcesMap: map[string]*schema.Resource{
-			"admin_user": resourceEvent(),
-		},
-		ConfigureFunc: providerConfigure,
-	}
-}
-
-func providerConfigure(d *schema.ResourceData) (interface{}, error) {
-	// TODO
-	return nil, nil
 }
