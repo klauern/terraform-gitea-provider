@@ -6,10 +6,11 @@ import (
 
 func Provider() *schema.Provider {
 	return &schema.Provider{
+		Schema: map[string]*schema.Schema{},
 		ResourcesMap: map[string]*schema.Resource{
-			"admin_user": resourceEvent(),
+			"resource_admin_user": resourceAdminUser(),
 		},
-		ConfigureFunc: providerConfigure,
+		// ConfigureFunc: providerConfigure,
 	}
 }
 
