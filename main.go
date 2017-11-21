@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/hashicorp/terraform/terraform"
-	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/plugin"
 )
 

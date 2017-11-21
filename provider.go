@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/plugin"
 )
 
 func Provider() *schema.Provider {
