@@ -14,11 +14,11 @@ func Provider() *schema.Provider {
 				Description: "Token key for Gitea API access",
 			},
 			"base_url": {
-				Type: schema.TypeString,
-				Required: true,
+				Type:        schema.TypeString,
+				Required:    true,
 				DefaultFunc: schema.EnvDefaultFunc("GITEA_URL", nil),
 				Description: "URL to the Gitea Server (https://gitea.user.com:8888)",
-			}
+			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
 			"resource_user": resourceUser(),
