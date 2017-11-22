@@ -98,7 +98,8 @@ func resourceUserUpdate(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceUserDelete(d *schema.ResourceData, m interface{}) error {
-	return nil
+	client := m.(*gitea.Client)
+	return client.AdminDeleteUser(d.Get("username").(string))
 }
 
 func setUserResourceData(d *schema.ResourceData, u *gitea.User) error {
