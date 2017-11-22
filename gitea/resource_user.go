@@ -73,20 +73,49 @@ func resourceUserCreate(d *schema.ResourceData, m interface{}) error {
 		return errors.WithMessage(err, "unable to create user")
 	}
 
-	d.Set("id", user.ID)
-	d.Set("avatar_url", user.AvatarURL)
-	d.Set("username", user.UserName)
-	d.Set("email", user.Email)
-	d.Set("full_name", user.FullName)
-	return nil
+	return setUserResourceData(d, user)
 }
 
 func resourceUserRead(d *schema.ResourceData, m interface{}) error {
-	return nil
+	client := m.(*gitea.Client)
+	user, err := client.GetUserInfo(d.Get("username").(string))
+	if err != nil {
+		return errors.WithMessage(err, "unable to retrieve user "+d.Get("username").(string))
+	}
+
+	return setUserResourceData(d, user)
 }
+
 func resourceUserUpdate(d *schema.ResourceData, m interface{}) error {
+	client := m.(*gitea.Client)
+	edit := gitea.EditUserOption{}
+
+	err := client.AdminEditUser(d.Get("username").(string), edit)
+	if err != nil {
+		return errors.WithMessage(err, "unable to edit user "+d.Get("username").(string))
+	}
 	return nil
 }
+
 func resourceUserDelete(d *schema.ResourceData, m interface{}) error {
+	return nil
+}
+
+func setUserResourceData(d *schema.ResourceData, u *gitea.User) error {
+	if err := d.Set("avatar_url", u.AvatarURL); err != nil {
+		return errors.WithMessage(err, "cannot set avatar URL")
+	}
+	if err := d.Set("email", u.Email); err != nil {
+		return errors.WithMessage(err, "cannot set email")
+	}
+	if err := d.Set("full_name", u.FullName); err != nil {
+		return errors.WithMessage(err, "cannot set full name")
+	}
+	if err := d.Set("id", u.ID); err != nil {
+		return errors.WithMessage(err, "cannot set id")
+	}
+	if err := d.Set("username", u.UserName); err != nil {
+		return errors.WithMessage(err, "cannot set username")
+	}
 	return nil
 }
