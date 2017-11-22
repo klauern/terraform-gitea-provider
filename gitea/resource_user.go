@@ -12,7 +12,7 @@ func resourceUser() *schema.Resource {
 		Delete: resourceUserDelete,
 
 		Schema: map[string]*schema.Schema{
-			"id": {
+			"gitea_id": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},
@@ -115,7 +115,7 @@ func setUserResourceData(d *schema.ResourceData, u *gitea.User) error {
 	if err := d.Set("full_name", u.FullName); err != nil {
 		return errors.WithMessage(err, "cannot set full name")
 	}
-	if err := d.Set("id", u.ID); err != nil {
+	if err := d.Set("gitea_id", u.ID); err != nil {
 		return errors.WithMessage(err, "cannot set id")
 	}
 	if err := d.Set("username", u.UserName); err != nil {
