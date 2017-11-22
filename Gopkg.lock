@@ -2,6 +2,12 @@
 
 
 [[projects]]
+  branch = "master"
+  name = "code.gitea.io/sdk"
+  packages = ["gitea"]
+  revision = "4319a1eaff39116a6d5150b09acaca7f5144defe"
+
+[[projects]]
   name = "github.com/agext/levenshtein"
   packages = ["."]
   revision = "5f10fee965225ac1eecdc234c09daf5cd9e7f7b6"
@@ -199,6 +205,12 @@
   revision = "63d60e9d0dbc60cf9164e6510889b0db6683d98c"
 
 [[projects]]
+  name = "github.com/pkg/errors"
+  packages = ["."]
+  revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
+  version = "v0.8.0"
+
+[[projects]]
   name = "github.com/posener/complete"
   packages = [".","cmd","cmd/install","match"]
   revision = "dc2bc5a81accba8782bebea28628224643a8286a"
@@ -261,6 +273,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "89717c0b86cc0b39da543009a427e0fb65cc0619eebb91494a6278839c6dfb10"
+  inputs-digest = "486c4496caabeb37ced518ced225b5fa0ddcf2703e86d4a4ff8dd60f0cfecab6"
   solver-name = "gps-cdcl"
   solver-version = 1
