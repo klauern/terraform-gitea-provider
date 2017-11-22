@@ -23,7 +23,7 @@ func Provider() *schema.Provider {
 		ResourcesMap: map[string]*schema.Resource{
 			"resource_user": resourceUser(),
 		},
-		// ConfigureFunc: providerConfigure,
+		ConfigureFunc: providerConfigure,
 	}
 }
 
