@@ -88,7 +88,14 @@ func resourceUserRead(d *schema.ResourceData, m interface{}) error {
 
 func resourceUserUpdate(d *schema.ResourceData, m interface{}) error {
 	client := m.(*gitea.Client)
-	edit := gitea.EditUserOption{}
+	isAdmin := d.Get("is_admin_user").(bool)
+	edit := gitea.EditUserOption{
+		Admin:     &isAdmin,
+		Email:     d.Get("email").(string),
+		FullName:  d.Get("full_name").(string),
+		LoginName: d.Get("login").(string),
+		Password:  d.Get("password").(string),
+	}
 
 	err := client.AdminEditUser(d.Get("username").(string), edit)
 	if err != nil {
