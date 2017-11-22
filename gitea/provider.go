@@ -28,6 +28,10 @@ func Provider() *schema.Provider {
 }
 
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
-	// TODO
-	return nil, nil
+	config := &Config{
+		Token:   d.Get("token").(string),
+		BaseURL: d.Get("base_url").(string),
+	}
+
+	return config.Client(), nil
 }
