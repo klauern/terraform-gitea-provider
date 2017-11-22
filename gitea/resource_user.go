@@ -10,32 +10,37 @@ func resourceUser() *schema.Resource {
 		Delete: resourceUserDelete,
 
 		Schema: map[string]*schema.Schema{
-			"login": &schema.Schema{
+			"id": {
+				Type:        schema.TypeString,
+				Computed:    true,
+				Description: "",
+			},
+			"login": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Description: "",
 			},
-			"full_name": &schema.Schema{
+			"full_name": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Description: "",
 			},
-			"email": &schema.Schema{
+			"email": {
 				Type:        schema.TypeString,
 				Required:    true,
 				Description: "",
 			},
-			"avatar_url": &schema.Schema{
+			"avatar_url": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Description: "",
 			},
-			"username": &schema.Schema{
+			"username": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				Description: "",
 			},
-			"is_admin_user": &schema.Schema{
+			"is_admin_user": {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				Description: "",
