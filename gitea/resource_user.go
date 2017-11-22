@@ -4,10 +4,10 @@ import "github.com/hashicorp/terraform/helper/schema"
 
 func resourceUser() *schema.Resource {
 	return &schema.Resource{
-		Create: resourceAdminUserCreate,
-		Read:   resourceAdminUserRead,
-		Update: resourceAdminUserUpdate,
-		Delete: resourceAdminUserDelete,
+		Create: resourceUserCreate,
+		Read:   resourceUserRead,
+		Update: resourceUserUpdate,
+		Delete: resourceUserDelete,
 
 		Schema: map[string]*schema.Schema{
 			"login": &schema.Schema{
@@ -45,15 +45,15 @@ func resourceUser() *schema.Resource {
 	}
 }
 
-func resourceAdminUserCreate(d *schema.ResourceData, m interface{}) error {
+func resourceUserCreate(d *schema.ResourceData, m interface{}) error {
 	return nil
 }
-func resourceAdminUserRead(d *schema.ResourceData, m interface{}) error {
+func resourceUserRead(d *schema.ResourceData, m interface{}) error {
 	return nil
 }
-func resourceAdminUserUpdate(d *schema.ResourceData, m interface{}) error {
+func resourceUserUpdate(d *schema.ResourceData, m interface{}) error {
 	return nil
 }
-func resourceAdminUserDelete(d *schema.ResourceData, m interface{}) error {
+func resourceUserDelete(d *schema.ResourceData, m interface{}) error {
 	return nil
 }
