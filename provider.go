@@ -6,9 +6,16 @@ import (
 
 func Provider() *schema.Provider {
 	return &schema.Provider{
-		Schema: map[string]*schema.Schema{},
+		Schema: map[string]*schema.Schema{
+			"token": {
+				Type:        schema.TypeString,
+				Required:    true,
+				DefaultFunc: schema.EnvDefaultFunc("GITEA_TOKEN", nil),
+				Description: "Token key for Gitea API access",
+			},
+		},
 		ResourcesMap: map[string]*schema.Resource{
-			"resource_admin_user": resourceUser(),
+			"resource_user": resourceUser(),
 		},
 		// ConfigureFunc: providerConfigure,
 	}
