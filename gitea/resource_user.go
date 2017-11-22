@@ -40,7 +40,7 @@ func resourceUser() *schema.Resource {
 				Type:     schema.TypeString,
 				Optional: false,
 			},
-			"is_admin_user": {
+			"is_admin": {
 				Type:     schema.TypeBool,
 				Optional: true,
 				Default:  false,
@@ -65,7 +65,7 @@ func resourceUserCreate(d *schema.ResourceData, m interface{}) error {
 		return errors.WithMessage(err, "unable to create user")
 	}
 
-	if d.Get("is_admin_user").(bool) {
+	if d.Get("is_admin").(bool) {
 		return resourceUserUpdate(d, m)
 	}
 
@@ -84,7 +84,7 @@ func resourceUserRead(d *schema.ResourceData, m interface{}) error {
 
 func resourceUserUpdate(d *schema.ResourceData, m interface{}) error {
 	client := m.(*gitea.Client)
-	isAdmin := d.Get("is_admin_user").(bool)
+	isAdmin := d.Get("is_admin").(bool)
 	edit := gitea.EditUserOption{
 		Admin:     &isAdmin,
 		Email:     d.Get("email").(string),
