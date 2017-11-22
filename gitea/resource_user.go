@@ -13,45 +13,37 @@ func resourceUser() *schema.Resource {
 
 		Schema: map[string]*schema.Schema{
 			"id": {
-				Type:        schema.TypeString,
-				Computed:    true,
-				Description: "",
+				Type:     schema.TypeString,
+				Computed: true,
 			},
 			"login": {
-				Type:        schema.TypeString,
-				Required:    true,
-				Description: "",
+				Type:     schema.TypeString,
+				Required: true,
 			},
 			"full_name": {
-				Type:        schema.TypeString,
-				Required:    true,
-				Description: "",
+				Type:     schema.TypeString,
+				Required: true,
 			},
 			"email": {
-				Type:        schema.TypeString,
-				Required:    true,
-				Description: "",
+				Type:     schema.TypeString,
+				Required: true,
 			},
 			"avatar_url": {
-				Type:        schema.TypeString,
-				Optional:    true,
-				Description: "",
+				Type:     schema.TypeString,
+				Computed: true,
 			},
 			"username": {
-				Type:        schema.TypeString,
-				Optional:    true,
-				Description: "",
+				Type:     schema.TypeString,
+				Optional: true,
 			},
 			"password": {
-				Type:        schema.TypeString,
-				Optional:    false,
-				Description: "",
+				Type:     schema.TypeString,
+				Optional: false,
 			},
 			"is_admin_user": {
-				Type:        schema.TypeBool,
-				Optional:    true,
-				Description: "",
-				Default:     false,
+				Type:     schema.TypeBool,
+				Optional: true,
+				Default:  false,
 			},
 		},
 	}
@@ -71,6 +63,10 @@ func resourceUserCreate(d *schema.ResourceData, m interface{}) error {
 	user, err := client.AdminCreateUser(create)
 	if err != nil {
 		return errors.WithMessage(err, "unable to create user")
+	}
+
+	if d.Get("is_admin_user").(bool) {
+		return resourceUserUpdate(d, m)
 	}
 
 	return setUserResourceData(d, user)
