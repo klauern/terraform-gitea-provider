@@ -32,4 +32,5 @@ hugo.exe
 
 vendor/
 _vendor*
-/terraform-provider-gitea
+/terraform-provider-gitea*
+/.terraform
