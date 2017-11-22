@@ -21,7 +21,7 @@ func Provider() *schema.Provider {
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
-			"resource_user": resourceUser(),
+			"gitea_user": resourceUser(),
 		},
 		ConfigureFunc: providerConfigure,
 	}
