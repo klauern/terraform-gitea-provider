@@ -38,7 +38,7 @@ func resourceUser() *schema.Resource {
 			},
 			"password": {
 				Type:     schema.TypeString,
-				Optional: false,
+				Required: true,
 			},
 			"is_admin": {
 				Type:     schema.TypeBool,
