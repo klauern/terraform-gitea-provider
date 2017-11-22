@@ -24,3 +24,12 @@
 [[constraint]]
   name = "github.com/hashicorp/terraform"
   version = "0.11.0"
+
+[[constraint]]
+  name = "github.com/pkg/errors"
+  branch = "master"
+
+[[constraint]]
+  name = "code.gitea.io/sdk"
+  source = "github.com/go-gitea/go-sdk"
+  branch = "master"
