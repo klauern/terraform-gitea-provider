@@ -36,11 +36,11 @@ func resourceUser() *schema.Resource {
 				Description: "",
 			},
 			"is_admin_user": &schema.Schema{
-				Type: 	schema.TypeBool,
-				Optional: true,
+				Type:        schema.TypeBool,
+				Optional:    true,
 				Description: "",
-				Default: false,
-			}
+				Default:     false,
+			},
 		},
 	}
 }
