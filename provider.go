@@ -8,7 +8,7 @@ func Provider() *schema.Provider {
 	return &schema.Provider{
 		Schema: map[string]*schema.Schema{},
 		ResourcesMap: map[string]*schema.Resource{
-			"resource_admin_user": resourceAdminUser(),
+			"resource_admin_user": resourceUser(),
 		},
 		// ConfigureFunc: providerConfigure,
 	}

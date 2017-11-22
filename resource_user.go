@@ -2,7 +2,7 @@ package main
 
 import "github.com/hashicorp/terraform/helper/schema"
 
-func resourceAdminUser() *schema.Resource {
+func resourceUser() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceAdminUserCreate,
 		Read:   resourceAdminUserRead,
@@ -35,6 +35,12 @@ func resourceAdminUser() *schema.Resource {
 				Optional:    true,
 				Description: "",
 			},
+			"is_admin_user": &schema.Schema{
+				Type: 	schema.TypeBool,
+				Optional: true,
+				Description: "",
+				Default: false,
+			}
 		},
 	}
 }
