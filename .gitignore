@@ -34,3 +34,5 @@ vendor/
 _vendor*
 /terraform-provider-gitea*
 /.terraform
+/terraform.tfvars
+/terraform.tfstate
