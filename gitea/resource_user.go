@@ -1,8 +1,10 @@
 package gitea
 
-import "github.com/hashicorp/terraform/helper/schema"
-import "code.gitea.io/sdk/gitea"
-import "github.com/pkg/errors"
+import (
+	"code.gitea.io/sdk/gitea"
+	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/pkg/errors"
+)
 
 func resourceUser() *schema.Resource {
 	return &schema.Resource{
@@ -37,8 +39,9 @@ func resourceUser() *schema.Resource {
 				Optional: true,
 			},
 			"password": {
-				Type:     schema.TypeString,
-				Required: true,
+				Type:      schema.TypeString,
+				Required:  true,
+				Sensitive: true,
 			},
 			"is_admin": {
 				Type:     schema.TypeBool,
@@ -58,7 +61,9 @@ func resourceUserCreate(d *schema.ResourceData, m interface{}) error {
 		Password:   d.Get("password").(string),
 		SendNotify: false,
 		Username:   d.Get("username").(string),
+		// SourceID:   0,
 	}
+	// fmt.Printf("Create Options: %#v", create)
 
 	user, err := client.AdminCreateUser(create)
 	if err != nil {
