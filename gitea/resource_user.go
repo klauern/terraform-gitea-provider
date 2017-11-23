@@ -61,9 +61,7 @@ func resourceUserCreate(d *schema.ResourceData, m interface{}) error {
 		Password:   d.Get("password").(string),
 		SendNotify: false,
 		Username:   d.Get("username").(string),
-		// SourceID:   0,
 	}
-	// fmt.Printf("Create Options: %#v", create)
 
 	user, err := client.AdminCreateUser(create)
 	if err != nil {
