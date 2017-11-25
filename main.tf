@@ -11,7 +11,7 @@ provider "gitea" {
     base_url = "${var.gitea_base_url}"
 }
 
-resource "gitea_user" "bob" {
+resource "gitea_user" "user" {
     login = "bob"
     password = "password"
     email = "bob@example.com"
